@@ -16,6 +16,60 @@
     return element;
   };
 
+  const createBilingualLabel = (item) => {
+    const label = document.createElement("span");
+    label.className = "bilingual-label";
+    label.append(
+      createTextElement("span", "bilingual-label-cn", item.label),
+      createTextElement("span", "bilingual-label-en", item.english),
+    );
+    return label;
+  };
+
+  const renderHome = () => {
+    const home = data.home;
+    if (!home) return;
+
+    const eyebrow = document.querySelector("[data-home-eyebrow]");
+    const title = document.querySelector("[data-home-title]");
+    const intro = document.querySelector("[data-home-intro]");
+    const layover = document.querySelector("[data-home-layover]");
+    if (eyebrow) eyebrow.textContent = home.eyebrow;
+    if (title) title.textContent = home.title;
+    if (intro) intro.textContent = home.intro;
+    if (layover) layover.textContent = home.layover;
+
+    const navigation = document.querySelector("[data-site-nav]");
+    home.navigation.forEach((item) => {
+      const link = document.createElement("a");
+      link.href = `#${item.target}`;
+      link.setAttribute("aria-label", `${item.label}，${item.english}`);
+      link.append(createBilingualLabel(item));
+      navigation?.append(link);
+    });
+
+    const cakeLinks = document.querySelector("[data-cake-links]");
+    home.cakes.forEach((item) => {
+      const link = document.createElement("a");
+      link.className = "cake-link";
+      link.href = `#${item.target}`;
+      link.setAttribute("aria-label", `前往${item.label}，${item.english}`);
+
+      const imageFrame = document.createElement("span");
+      imageFrame.className = "cake-image-frame";
+      const image = document.createElement("img");
+      image.src = item.image;
+      image.alt = "";
+      image.width = 1024;
+      image.height = 1024;
+      image.loading = "eager";
+      imageFrame.append(image);
+
+      link.append(imageFrame, createBilingualLabel(item));
+      cakeLinks?.append(link);
+    });
+  };
+
   const renderAbout = () => {
     const container = document.querySelector("[data-about-cards]");
     if (!container) return;
@@ -130,12 +184,14 @@
     const closeNavigation = () => {
       if (!toggle || !navigation) return;
       toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "打开导航菜单");
       navigation.classList.remove("is-open");
     };
 
     toggle?.addEventListener("click", () => {
       const isOpen = toggle.getAttribute("aria-expanded") === "true";
       toggle.setAttribute("aria-expanded", String(!isOpen));
+      toggle.setAttribute("aria-label", isOpen ? "打开导航菜单" : "关闭导航菜单");
       navigation?.classList.toggle("is-open", !isOpen);
     });
 
@@ -147,17 +203,23 @@
       if (event.key === "Escape") closeNavigation();
     });
 
+    document.addEventListener("click", (event) => {
+      if (!header?.contains(event.target)) closeNavigation();
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 860) closeNavigation();
+    });
+
     window.addEventListener("scroll", updateHeader, { passive: true });
     updateHeader();
   };
 
   const initializePage = () => {
-    const homeIntro = document.querySelector("[data-home-intro]");
-    if (homeIntro) homeIntro.textContent = data.basic.homeIntro;
-
     const year = document.querySelector("[data-current-year]");
     if (year) year.textContent = String(new Date().getFullYear());
 
+    renderHome();
     renderAbout();
     renderProjects();
     renderRecipes();

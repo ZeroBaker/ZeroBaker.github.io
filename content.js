@@ -5,9 +5,48 @@
 window.siteData = {
   basic: {
     ownerName: "王珺怡",
-    siteName: "zerobaker",
-    homeIntro:
-      "这是我的个人网站，也是一家只在网上营业的烘焙坊。戳戳小蛋糕，可以了解更多信息哦～",
+    siteName: "ZeroBaker",
+  },
+
+  // 首页可编辑文字与导航入口集中放在这里，后续调整文案时无需修改 HTML。
+  home: {
+    eyebrow: "WELCOME TO MY ONLINE-ONLY BAKERY",
+    title: "欢迎你！我是王珺怡",
+    intro:
+      "这是我的个人网站，也是一家只在网上营业的烘焙坊。这里收集我做过的事、喜欢的东西，以及人生路上偶尔停下来时留下的注脚。戳戳小蛋糕，可以继续逛逛。",
+    layover: "A little layover between life, work and everything I love.",
+    navigation: [
+      { label: "自我介绍", english: "ABOUT THE BAKER", target: "about" },
+      { label: "作品展示", english: "FRESHLY BAKED", target: "projects" },
+      { label: "烘焙秘方", english: "SECRET RECIPES", target: "recipes" },
+      { label: "联系方式", english: "FIND ME", target: "contact" },
+    ],
+    cakes: [
+      {
+        label: "自我介绍",
+        english: "ABOUT THE BAKER",
+        target: "about",
+        image: "assets/images/home/home-cake-about.png",
+      },
+      {
+        label: "作品展示",
+        english: "FRESHLY BAKED",
+        target: "projects",
+        image: "assets/images/home/home-cake-projects.png",
+      },
+      {
+        label: "烘焙秘方",
+        english: "SECRET RECIPES",
+        target: "recipes",
+        image: "assets/images/home/home-cake-recipes.png",
+      },
+      {
+        label: "联系方式",
+        english: "FIND ME",
+        target: "contact",
+        image: "assets/images/home/home-cake-contact.png",
+      },
+    ],
   },
 
   about: [

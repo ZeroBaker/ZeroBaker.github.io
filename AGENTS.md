@@ -23,7 +23,8 @@ The website is not only for job applications. It should present her experiences,
 * `script.js`: interaction and rendering logic.
 * `content.js`: editable project, recipe, social-media, and text data.
 * `assets/`: images, audio, PDF files, and decorative elements.
-* `docs/`: project brief, style guide, content plan, and task list.
+* `docs/PROJECT_BRIEF.md`: the only official project brief.
+* `docs/`: style guide, content plan, task list, and other project documents.
 
 Do not hard-code repeatable project or recipe cards in `index.html`. Generate them from `content.js`.
 
