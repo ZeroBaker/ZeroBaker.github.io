@@ -72,17 +72,66 @@
 
   const renderAbout = () => {
     const container = document.querySelector("[data-about-cards]");
-    if (!container) return;
+    const about = data.about;
+    if (!container || !about) return;
 
-    data.about.forEach((item) => {
+    const englishTitle = document.querySelector("[data-about-english-title]");
+    const title = document.querySelector("[data-about-title]");
+    const intro = document.querySelector("[data-about-intro]");
+    const image = document.querySelector("[data-about-image]");
+
+    if (englishTitle) englishTitle.textContent = about.englishTitle;
+    if (title) title.textContent = about.title;
+    if (intro) intro.textContent = about.intro;
+    if (image) {
+      image.src = about.image.src;
+      image.alt = about.image.alt;
+    }
+
+    about.recipes.forEach((item) => {
       const card = document.createElement("article");
       card.className = "about-card";
+      card.dataset.theme = item.theme;
+
+      const icon = document.createElement("span");
+      icon.className = `about-card-icon about-card-icon--${item.icon}`;
+      icon.setAttribute("aria-hidden", "true");
+
+      const titleGroup = document.createElement("div");
+      titleGroup.className = "about-card-title-group";
+      titleGroup.append(
+        createTextElement("h3", "about-card-title", item.title),
+        createTextElement("p", "about-card-title-en", item.englishTitle),
+      );
+
       card.append(
         createTextElement("span", "recipe-number", item.number),
-        createTextElement("h3", "", item.title),
-        createTextElement("p", "", item.text),
+        icon,
+        titleGroup,
+        createTextElement("p", "about-card-text", item.text),
       );
       container.append(card);
+    });
+  };
+
+  const setupAboutReveal = () => {
+    const cards = document.querySelectorAll(".about-card");
+    if (!cards.length || !("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.16 },
+    );
+
+    cards.forEach((card) => {
+      card.classList.add("is-reveal-ready");
+      observer.observe(card);
     });
   };
 
@@ -221,6 +270,7 @@
 
     renderHome();
     renderAbout();
+    setupAboutReveal();
     renderProjects();
     renderRecipes();
     renderSocialLinks();

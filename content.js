@@ -49,23 +49,43 @@ window.siteData = {
     ],
   },
 
-  about: [
-    {
-      number: "Recipe 01",
-      title: "学习与观察",
-      text: "这里将补充本科、硕士和高丽大学交换学习的成长故事。",
+  // 自我介绍的标题、引导语、图片和三份 Recipe 文案都在这里维护。
+  about: {
+    title: "自我介绍",
+    englishTitle: "ABOUT THE BAKER",
+    intro:
+      "我很难用一个标签概括自己。比起罗列经历，我更愿意从三份配方说起：我如何观察生活、如何投入行动，以及如何把喜欢的事慢慢做成作品。",
+    image: {
+      src: "assets/images/about/about-main-collage.png",
+      alt: "王珺怡的个人拼贴照片",
     },
-    {
-      number: "Recipe 02",
-      title: "工作与行动",
-      text: "这里将补充中国人民大学与搜狐的工作经历，以及内容运营和项目执行经验。",
-    },
-    {
-      number: "Recipe 03",
-      title: "兴趣与创造",
-      text: "这里将补充内容创作、线下活动、AI 探索与 Vibe Coding 的故事。",
-    },
-  ],
+    recipes: [
+      {
+        number: "Recipe 01",
+        title: "学习与观察",
+        englishTitle: "LEARNING & OBSERVING",
+        text: "我本科就读于中国人民大学农业与农村发展学院农林经济管理专业，现在也继续在这里攻读食品经济管理硕士。在人大学习的经历，让我习惯从数据、制度与人的选择之间理解问题；调研与科研训练，以及那段特别的高丽大学交换经历，则让我不断走近真实生活，观察不同的人如何工作、消费、生活，又如何作出自己的决定。",
+        theme: "sage",
+        icon: "observe",
+      },
+      {
+        number: "Recipe 02",
+        title: "工作与行动",
+        englishTitle: "WORKING & MAKING THINGS HAPPEN",
+        text: "本科毕业后，我在中国人民大学综合保障部全职工作了两年，而后保研攻读硕士学位。这段工作中，我做过新媒体运营，也处理过行政、党务事务，并参与了学校许多大型项目的推进。后来在硕士期间，我进入搜狐担任企业文化实习生，继续接触内容策划、短视频与活动传播。不同角色让我逐渐确认：我既能把复杂的事情稳稳推进，也喜欢把一个想法变成更清楚、更有意思的内容。",
+        theme: "caramel",
+        icon: "whisk",
+      },
+      {
+        number: "Recipe 03",
+        title: "兴趣与创造",
+        englishTitle: "LOVING & CREATING",
+        text: "追星是我学习创造的另一条路径。为了记录喜欢，我开始剪视频、运营账号、组织线下活动，也在社群与跨文化表达中认识更多的人。现在，我又把好奇心伸向AI、基础编程与Vibe Coding；ZeroBaker——你现在正在浏览的这个网页，就是我第一次把这些兴趣完整做成一个作品。",
+        theme: "berry",
+        icon: "create",
+      },
+    ],
+  },
 
   projects: [
     {

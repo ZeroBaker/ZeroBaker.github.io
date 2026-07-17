@@ -433,7 +433,6 @@ h2 {
   font-size: clamp(0.55rem, 0.78vw, 0.66rem);
 }
 
-.about-layout,
 .contact-layout {
   display: grid;
   grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
@@ -441,14 +440,12 @@ h2 {
   align-items: start;
 }
 
-.about-cards,
 .card-grid,
 .recipe-grid {
   display: grid;
   gap: 20px;
 }
 
-.about-card,
 .project-card,
 .recipe-card {
   padding: 24px;
@@ -458,11 +455,295 @@ h2 {
   box-shadow: var(--shadow-soft);
 }
 
-.about-card p,
 .project-card p,
 .recipe-card p {
   margin-bottom: 0;
   color: var(--color-muted);
+}
+
+/* 自我介绍：左侧人物拼贴与右侧三份 Recipe 共同组成一页手帐。 */
+.about-section {
+  overflow-x: clip;
+  background-color: #ece1d4;
+  background-image:
+    radial-gradient(circle at 18% 32%, rgba(126, 150, 112, 0.1), transparent 28%),
+    radial-gradient(circle at 88% 76%, rgba(167, 101, 118, 0.08), transparent 26%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 23px,
+      rgba(93, 73, 59, 0.018) 24px
+    );
+}
+
+.about-heading {
+  max-width: 850px;
+  margin-bottom: clamp(42px, 6vw, 70px);
+}
+
+.about-heading .section-lead {
+  max-width: 820px;
+  margin-bottom: 0;
+  color: #675b55;
+  line-height: 1.9;
+}
+
+.about-layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(290px, 2fr) minmax(0, 3fr);
+  gap: clamp(38px, 6vw, 76px);
+  align-items: start;
+}
+
+.about-layout::before {
+  position: absolute;
+  top: 58px;
+  bottom: 58px;
+  left: 38.8%;
+  width: 1px;
+  content: "";
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(122, 91, 70, 0.26) 0 5px,
+    transparent 5px 13px
+  );
+}
+
+.about-visual {
+  position: sticky;
+  top: calc(var(--header-height) + 28px);
+  align-self: start;
+  width: min(100%, 455px);
+  margin: 0 auto;
+}
+
+.about-photo-frame {
+  position: relative;
+  isolation: isolate;
+  padding: 8px;
+}
+
+.about-photo-frame::before {
+  position: absolute;
+  inset: 5% 4% 3%;
+  z-index: -1;
+  content: "";
+  background: rgba(250, 245, 237, 0.7);
+  border: 1px solid rgba(113, 83, 64, 0.12);
+  box-shadow: 0 18px 38px rgba(88, 66, 51, 0.09);
+  transform: rotate(-1.5deg);
+}
+
+.about-photo-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 14px rgba(72, 51, 40, 0.09));
+}
+
+.about-cards {
+  display: grid;
+  min-width: 0;
+  gap: clamp(24px, 3.4vw, 36px);
+}
+
+.about-card {
+  --recipe-accent: #7e9670;
+  --card-angle: -0.25deg;
+  position: relative;
+  min-width: 0;
+  padding: clamp(27px, 3.4vw, 39px);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 8% 14%, rgba(95, 72, 58, 0.025) 0 0.8px, transparent 1px),
+    rgba(255, 253, 249, 0.94);
+  background-size: 13px 15px, auto;
+  border: 1px solid rgba(82, 65, 56, 0.13);
+  border-radius: 5px 18px 7px 15px;
+  box-shadow: 0 14px 30px rgba(88, 66, 51, 0.075);
+  transform: rotate(var(--card-angle));
+}
+
+.about-card:nth-child(2) {
+  --card-angle: 0.3deg;
+}
+
+.about-card:nth-child(3) {
+  --card-angle: -0.18deg;
+}
+
+.about-card[data-theme="sage"] {
+  --recipe-accent: #7e9670;
+}
+
+.about-card[data-theme="caramel"] {
+  --recipe-accent: #a87350;
+}
+
+.about-card[data-theme="berry"] {
+  --recipe-accent: #a76576;
+}
+
+.about-card::before {
+  position: absolute;
+  top: 0;
+  right: 22px;
+  left: 22px;
+  height: 3px;
+  content: "";
+  background: var(--recipe-accent);
+  border-radius: 0 0 8px 8px;
+  opacity: 0.88;
+}
+
+.about-card .recipe-number {
+  margin-bottom: 18px;
+  color: var(--recipe-accent);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+}
+
+.about-card-title-group {
+  position: relative;
+  z-index: 1;
+  padding-right: 62px;
+}
+
+.about-card-title {
+  margin-bottom: 5px;
+  font-size: clamp(1.45rem, 2.3vw, 2rem);
+  line-height: 1.3;
+}
+
+.about-card-title-en {
+  display: inline;
+  margin: 0;
+  color: var(--recipe-accent);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 1.65vw, 1.3rem);
+  font-weight: 700;
+  line-height: 1.34;
+  letter-spacing: 0.055em;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.about-card-title-en::after {
+  display: block;
+  width: min(180px, 44%);
+  height: 6px;
+  margin: 7px 0 21px;
+  content: "";
+  background: var(--recipe-accent);
+  clip-path: polygon(0 43%, 100% 18%, 98% 62%, 1% 72%);
+  opacity: 0.58;
+}
+
+.about-card-text {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #514640;
+  font-size: clamp(0.98rem, 1.2vw, 1.05rem);
+  line-height: 1.95;
+  letter-spacing: 0.015em;
+}
+
+.about-card-icon {
+  position: absolute;
+  top: 64px;
+  right: clamp(24px, 3.4vw, 38px);
+  width: 48px;
+  height: 52px;
+  color: var(--recipe-accent);
+  opacity: 0.84;
+  transform: rotate(3deg);
+}
+
+.about-card-icon--observe::before {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 27px;
+  height: 27px;
+  content: "";
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+
+.about-card-icon--observe::after {
+  position: absolute;
+  top: 31px;
+  left: 29px;
+  width: 21px;
+  height: 2px;
+  content: "";
+  background: currentColor;
+  border-radius: 99px;
+  transform: rotate(47deg);
+  transform-origin: left center;
+}
+
+.about-card-icon--whisk::before {
+  position: absolute;
+  top: 1px;
+  left: 7px;
+  width: 25px;
+  height: 34px;
+  content: "";
+  border: 2px solid currentColor;
+  border-radius: 52% 52% 42% 42%;
+  box-shadow: inset 6px 0 0 -5px currentColor, inset -6px 0 0 -5px currentColor;
+  transform: rotate(-24deg);
+}
+
+.about-card-icon--whisk::after {
+  position: absolute;
+  right: 9px;
+  bottom: 0;
+  width: 5px;
+  height: 25px;
+  content: "";
+  background: currentColor;
+  border-radius: 99px;
+  transform: rotate(-24deg);
+}
+
+.about-card-icon--create::before {
+  position: absolute;
+  bottom: 2px;
+  left: 4px;
+  width: 30px;
+  height: 39px;
+  content: "";
+  background: currentColor;
+  clip-path: polygon(8% 0, 94% 13%, 58% 88%, 46% 100%, 39% 84%);
+  opacity: 0.8;
+  transform: rotate(-27deg);
+}
+
+.about-card-icon--create::after {
+  position: absolute;
+  top: -5px;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  content: "";
+  background: currentColor;
+  clip-path: polygon(50% 0, 61% 38%, 100% 50%, 61% 62%, 50% 100%, 39% 62%, 0 50%, 39% 38%);
+}
+
+.about-card.is-reveal-ready {
+  opacity: 0;
+  transform: translateY(18px) rotate(var(--card-angle));
+  transition: opacity 520ms ease, transform 520ms ease;
+}
+
+.about-card.is-reveal-ready.is-visible {
+  opacity: 1;
+  transform: translateY(0) rotate(var(--card-angle));
 }
 
 .recipe-number,
@@ -657,14 +938,39 @@ h2 {
     font-size: 18px;
   }
 
-  .about-layout,
   .contact-layout {
     grid-template-columns: 1fr;
   }
 
-  .about-photo-placeholder,
   .contact-photo-placeholder {
     min-height: 320px;
+  }
+
+  .about-heading {
+    margin-bottom: 36px;
+  }
+
+  .about-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .about-layout::before {
+    display: none;
+  }
+
+  .about-visual {
+    position: static;
+    top: auto;
+    width: clamp(220px, 68vw, 280px);
+    margin: 0 auto;
+  }
+
+  .about-cards {
+    position: relative;
+    z-index: 2;
+    margin-top: 20px;
+    gap: 24px;
   }
 
   .card-grid {
@@ -806,6 +1112,73 @@ h2 {
   .project-card {
     grid-column: span 2;
   }
+
+  .about-section {
+    padding-top: 84px;
+    padding-bottom: 92px;
+  }
+
+  .about-heading .eyebrow {
+    font-size: 0.76rem;
+    line-height: 1.5;
+  }
+
+  .about-heading h2 {
+    margin-bottom: 14px;
+  }
+
+  .about-heading .section-lead {
+    font-size: 0.98rem;
+    line-height: 1.85;
+  }
+
+  .about-card {
+    padding: 25px 22px 27px;
+  }
+
+  .about-card::before {
+    right: 16px;
+    left: 16px;
+  }
+
+  .about-card .recipe-number {
+    margin-bottom: 17px;
+    font-size: 0.74rem;
+  }
+
+  .about-card-title-group {
+    padding-right: 0;
+  }
+
+  .about-card-title {
+    padding-right: 54px;
+    font-size: 1.42rem;
+  }
+
+  .about-card-title-en {
+    font-size: 0.98rem;
+    line-height: 1.4;
+    letter-spacing: 0.045em;
+  }
+
+  .about-card-title-en::after {
+    margin-bottom: 18px;
+  }
+
+  .about-card-text {
+    font-size: 0.96rem;
+    line-height: 1.92;
+    letter-spacing: 0;
+  }
+
+  .about-card-icon {
+    top: 56px;
+    right: 21px;
+    width: 43px;
+    height: 47px;
+    transform: scale(0.88) rotate(3deg);
+    transform-origin: top right;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -827,5 +1200,11 @@ h2 {
   .cake-link:nth-child(even):hover,
   .cake-link:nth-child(even):focus-visible {
     transform: none;
+  }
+
+  .about-card.is-reveal-ready,
+  .about-card.is-reveal-ready.is-visible {
+    opacity: 1;
+    transform: rotate(var(--card-angle));
   }
 }

@@ -72,18 +72,25 @@
         </div>
       </section>
 
-      <section id="about" class="section section-tinted" aria-labelledby="about-title">
-        <div class="section-inner">
-          <p class="eyebrow">About the Baker</p>
-          <h2 id="about-title">自我介绍</h2>
-          <p class="section-lead">
-            这里将用学习、工作与兴趣三份“配方”，讲述我的成长路径，而不是重复简历。
-          </p>
+      <section id="about" class="section about-section" aria-labelledby="about-title">
+        <div class="section-inner about-inner">
+          <header class="about-heading">
+            <p class="eyebrow" data-about-english-title></p>
+            <h2 id="about-title" data-about-title></h2>
+            <p class="section-lead" data-about-intro></p>
+          </header>
 
           <div class="about-layout">
-            <div class="placeholder about-photo-placeholder" role="img" aria-label="自我介绍主照片占位区域">
-              个人照片占位：assets/images/about/about-main-photo.jpg
-            </div>
+            <figure class="about-visual">
+              <div class="about-photo-frame">
+                <img
+                  data-about-image
+                  width="1199"
+                  height="1596"
+                  loading="lazy"
+                >
+              </div>
+            </figure>
             <div class="about-cards" data-about-cards></div>
           </div>
         </div>
