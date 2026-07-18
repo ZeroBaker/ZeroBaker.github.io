@@ -96,14 +96,19 @@
         </div>
       </section>
 
-      <section id="projects" class="section" aria-labelledby="projects-title">
-        <div class="section-inner">
-          <p class="eyebrow">Freshly Baked</p>
-          <h2 id="projects-title">作品展示</h2>
-          <p class="section-lead">
-            这里将展示视频创作、内容运营、活动项目和未来的 AI 尝试。
-          </p>
-          <div class="card-grid" data-project-list></div>
+      <section
+        id="projects"
+        class="section projects-section"
+        aria-labelledby="projects-title"
+      >
+        <div class="projects-decorations" data-project-decorations aria-hidden="true"></div>
+        <div class="section-inner projects-inner">
+          <header class="projects-heading">
+            <p class="eyebrow" data-projects-english-title></p>
+            <h2 id="projects-title" data-projects-title></h2>
+            <p class="section-lead" data-projects-intro></p>
+          </header>
+          <div class="projects-grid" data-project-list></div>
         </div>
       </section>
 

@@ -50,24 +50,33 @@
 
 ## 作品展示 / FRESHLY BAKED
 
-第一版建议选择 4—6 个代表作品。每个作品需要：
+板块定位：像 ZeroBaker 烘焙坊的成品橱窗一样，平铺展示四个代表作品。访客浏览截图和简短介绍后，可点击截图前往外部原作；不增加分类筛选、详情弹窗、横向轮播、项目时间线或“查看更多”。
 
-- 标题；
-- 类别或平台；
-- 时间；
-- 一句话介绍；
-- 我的职责；
-- 核心数据；
-- 封面图；
-- 原作链接；
-- 是否重点展示。
+固定文案：
 
-作品内容集中维护在 `content.js` 的 `projects` 数组中。
+- 中文标题：`作品展示`；
+- 英文标题：`FRESHLY BAKED`；
+- 引导文案：`这里是一些已经出炉的近期作品。`；
+- 图片提示：`点击图片查看原作`。
 
-搜狐经历可以公开展示：
+正式作品：
 
-- 本人剪辑的采访快剪视频；
-- 本人参与制作的活动推送。
+| 平台标签 | 中文标题 | 图片 | 强调色 | 原作链接 |
+| --- | --- | --- | --- | --- |
+| `BILIBILI · VIDEO EDIT` | `《防弹少年团solo，但是用〈怪奇物语〉打开》` | `assets/images/projects/project-bts-stranger-things.png` | 蓝莓紫 | `https://www.bilibili.com/video/BV1J84y1d7Qb` |
+| `XIAOHONGSHU · CONTENT OPERATION` | `搜狐员工采访快剪` | `assets/images/projects/project-sohu-interview.png` | 草莓红 | 用户确认的小红书作品链接，完整参数集中保存在 `content.js` |
+| `WECHAT · EDITORIAL CONTENT` | `搜狐企业文化活动推送` | `assets/images/projects/project-sohu-wechat.png` | 焦糖棕 | `https://mp.weixin.qq.com/s/sne4kqxSQGIWNExvvbKOTg` |
+| `WEB PROJECT · CONTENT & OPERATION` | `decodeBTS 歌词注释网站` | `assets/images/projects/project-decode-bts.png` | 鼠尾草绿 | `https://decodebts.netlify.app` |
+
+内容与交互规则：
+
+- 板块标题、引导文案、提示语和四个项目的文字、图片路径、alt 文本、链接、强调色统一由 `content.js` 管理；
+- `script.js` 根据 `projects` 数组生成四张作品卡，`index.html` 只保留板块容器；
+- 卡片顺序为平台标签、可点击截图、中文标题、两句介绍和小字提示；
+- 所有正式项目链接在新标签页打开，并使用 `rel="noopener noreferrer"`；
+- 若未来项目暂时没有有效链接，显示静态截图和“原作链接待补充”，不生成伪链接或不可用焦点；
+- 1200px 以上四列，768px—1199px 两列两行，767px 以下单列；手机端不依赖 hover；
+- 截图区域统一为 4:3，使用 `object-fit: cover`，当前四张正式截图无需单独调整 `object-position`。
 
 ## 烘焙秘方 / SECRET RECIPES
 

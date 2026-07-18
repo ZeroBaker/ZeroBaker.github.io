@@ -87,33 +87,61 @@ window.siteData = {
     ],
   },
 
+  // 作品展示的标题、提示语和卡片公共文字集中放在这里维护。
+  projectsSection: {
+    title: "作品展示",
+    englishTitle: "FRESHLY BAKED",
+    intro: "这里是一些已经出炉的近期作品。",
+    imageHint: "点击图片查看原作",
+    unavailableHint: "原作链接待补充",
+    decorativeNote: "fresh from the oven",
+  },
+
+  // 每个项目的文字、截图、链接和强调色都由这个数组生成。
   projects: [
     {
-      title: "搜狐企业文化内容运营",
-      category: "内容运营 / 企业文化",
-      description: "这里将补充项目背景、我的职责和项目结果。",
-      result: "数据待补充",
-      role: "选题、脚本、拍摄、剪辑与活动执行",
-      image: "assets/images/projects/sohu-content-cover.jpg",
-      url: "#",
+      platform: "BILIBILI · VIDEO EDIT",
+      title: "《防弹少年团solo，但是用〈怪奇物语〉打开》",
+      description:
+        "这是我运营的明星娱乐内容账号中的一支混剪作品，账号目前有1500+粉丝，累计播放量120万+。我尝试用《怪奇物语》的悬疑氛围重新组织BTS solo素材，完成选题、素材筛选、结构设计与剪辑包装。",
+      image: "assets/images/projects/project-bts-stranger-things.png",
+      imageAlt: "BTS成员在红色《怪奇物语》风格舞台上的混剪作品截图",
+      url: "https://www.bilibili.com/video/BV1J84y1d7Qb",
+      theme: "blueberry",
+      objectPosition: "center",
     },
     {
-      title: "Bilibili 视频创作",
-      category: "视频创作 / 明星娱乐",
-      description: "这里将展示混剪、自制综艺等代表作品。",
-      result: "累计播放量 120 万+",
-      role: "选题、素材筛选、叙事设计、剪辑与包装",
-      image: "assets/images/projects/bilibili-video-cover.jpg",
-      url: "#",
+      platform: "XIAOHONGSHU · CONTENT OPERATION",
+      title: "搜狐员工采访快剪",
+      description:
+        "2026年4月至7月，我参与“搜狐young”小红书账号的日常运营，负责选题、脚本、拍摄、剪辑与发布。这支采访快剪是其中一个案例，也记录了我把一个职场话题从创意推进到上线的完整过程。",
+      image: "assets/images/projects/project-sohu-interview.png",
+      imageAlt: "搜狐young采访快剪封面，画面文字为“狐厂青年请回答 pt.2”",
+      url: "https://www.xiaohongshu.com/discovery/item/6a583786000000000f014773?source=webshare&xhsshare=pc_web&xsec_token=ABIwIG49khNwna-gvPxLVwq2EA9-6glLEDXy2-N1JaXsg=&xsec_source=pc_share",
+      theme: "strawberry",
+      objectPosition: "center",
     },
     {
-      title: "150 人线下观影活动",
-      category: "社区活动 / 现场执行",
-      description: "这里将展示活动物料、现场照片与完整执行过程。",
-      result: "单场规模约 150 人",
-      role: "场地对接、报名组织、物料设计与现场执行",
-      image: "assets/images/projects/offline-event-cover.jpg",
-      url: "#",
+      platform: "WECHAT · EDITORIAL CONTENT",
+      title: "搜狐企业文化活动推送",
+      description:
+        "这是我在搜狐实习期间参与制作的一篇微信公众号图文，负责内容梳理、文案与排版呈现。它代表了我除短视频之外，在长图文表达和活动传播上的实践。",
+      image: "assets/images/projects/project-sohu-wechat.png",
+      imageAlt: "“2026搜狐成长生活节”微信公众号活动推送封面",
+      url: "https://mp.weixin.qq.com/s/sne4kqxSQGIWNExvvbKOTg",
+      theme: "caramel",
+      objectPosition: "center",
+    },
+    {
+      platform: "WEB PROJECT · CONTENT & OPERATION",
+      title: "decodeBTS 歌词注释网站",
+      description:
+        "decodeBTS是我和朋友共同搭建的BTS歌词注释网站，希望把翻译、词义和情感语境整理成更容易阅读的内容。我负责内容策划与运营，朋友负责视觉设计与代码，目前项目仍在持续完善。",
+      image: "assets/images/projects/project-decode-bts.png",
+      imageAlt: "decodeBTS歌词注释网站的歌曲解读页面截图",
+      url: "https://decodebts.netlify.app",
+      theme: "sage",
+      objectPosition: "center",
     },
   ],
 

@@ -137,47 +137,83 @@
 
   const renderProjects = () => {
     const container = document.querySelector("[data-project-list]");
-    if (!container) return;
+    const section = data.projectsSection;
+    if (!container || !section || !Array.isArray(data.projects)) return;
+
+    const englishTitle = document.querySelector("[data-projects-english-title]");
+    const title = document.querySelector("[data-projects-title]");
+    const intro = document.querySelector("[data-projects-intro]");
+    if (englishTitle) englishTitle.textContent = section.englishTitle;
+    if (title) title.textContent = section.title;
+    if (intro) intro.textContent = section.intro;
+
+    const decorations = document.querySelector("[data-project-decorations]");
+    if (decorations) {
+      const decorationClasses = ["whisk", "crumbs", "bun", "rack"];
+      const note = createTextElement(
+        "span",
+        "project-decor project-decor--note",
+        section.decorativeNote,
+      );
+      decorations.append(note);
+      decorationClasses.forEach((className) => {
+        const decoration = document.createElement("span");
+        decoration.className = `project-decor project-decor--${className}`;
+        decorations.append(decoration);
+      });
+    }
 
     data.projects.forEach((project) => {
       const card = document.createElement("article");
       card.className = "project-card";
+      card.dataset.theme = project.theme;
 
-      const imagePlaceholder = createTextElement(
-        "div",
-        "placeholder project-image-placeholder",
-        `封面图占位：${project.image}`,
-      );
-      imagePlaceholder.setAttribute("role", "img");
-      imagePlaceholder.setAttribute("aria-label", `${project.title}封面图占位区域`);
+      const hasExternalLink =
+        typeof project.url === "string" &&
+        project.url.trim() !== "" &&
+        project.url !== "#";
 
-      const details = createTextElement(
-        "p",
-        "",
-        `${project.description} 结果：${project.result}。我的职责：${project.role}。`,
-      );
+      const imageContainer = document.createElement(hasExternalLink ? "a" : "div");
+      imageContainer.className = "project-image-link";
 
-      const actions = document.createElement("div");
-      actions.className = "card-actions";
-      const link = createTextElement("a", "text-link", "查看原作");
-      link.href = project.url;
-
-      if (project.url === "#") {
-        link.classList.add("is-disabled");
-        link.setAttribute("aria-disabled", "true");
-        link.addEventListener("click", (event) => event.preventDefault());
+      if (hasExternalLink) {
+        imageContainer.href = project.url;
+        imageContainer.target = "_blank";
+        imageContainer.rel = "noopener noreferrer";
+        imageContainer.setAttribute(
+          "aria-label",
+          `查看“${project.title}”原作（在新标签页打开）`,
+        );
       } else {
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
+        imageContainer.classList.add("is-unavailable");
       }
 
-      actions.append(link);
+      const image = document.createElement("img");
+      image.src = project.image;
+      image.alt = project.imageAlt;
+      image.width = 1600;
+      image.height = 1200;
+      image.loading = "lazy";
+      image.decoding = "async";
+      image.style.objectPosition = project.objectPosition || "center";
+
+      imageContainer.append(image);
+      if (hasExternalLink) {
+        const externalIcon = createTextElement("span", "project-external-icon", "↗");
+        externalIcon.setAttribute("aria-hidden", "true");
+        imageContainer.append(externalIcon);
+      }
+
       card.append(
-        imagePlaceholder,
-        createTextElement("span", "project-meta", project.category),
-        createTextElement("h3", "", project.title),
-        details,
-        actions,
+        createTextElement("span", "project-meta", project.platform),
+        imageContainer,
+        createTextElement("h3", "project-title", project.title),
+        createTextElement("p", "project-description", project.description),
+        createTextElement(
+          "p",
+          `project-hint${hasExternalLink ? "" : " is-unavailable"}`,
+          hasExternalLink ? section.imageHint : section.unavailableHint,
+        ),
       );
       container.append(card);
     });
