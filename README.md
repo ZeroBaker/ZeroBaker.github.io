@@ -1,49 +1,36 @@
 # ZeroBaker
 
-ZeroBaker 是王珺怡的个人网站，也是一家只在网上营业的烘焙坊。网站以烘焙为叙事线索，展示她的学习与工作经历、内容作品、兴趣和生活注脚。
+王珺怡的个人网站，也是一家只在网上营业的烘焙坊。
 
-网站使用原生 HTML、CSS 和 JavaScript 开发，不依赖框架或构建工具，并通过 GitHub Pages 从仓库根目录直接发布。
+正式网站：[https://zerobaker.github.io](https://zerobaker.github.io)
 
-## 网站内容
+## 网站板块
 
-- 首页：通过四块小蛋糕进入主要板块；
-- 自我介绍：用三份 Recipe 讲述学习、工作与创造经历；
-- 作品展示：展示四项代表作品并链接到公开原作；
-- 烘焙秘方：通过七个纸团打开个人兴趣与生活故事；
-- 联系方式：提供公开社交平台与邮箱入口。
+- About the Baker
+- Freshly Baked
+- Secret Recipes
+- Find Me
 
-## 文件说明
+## 技术
 
-- `index.html`：网页结构和页面基础信息。
-- `style.css`：视觉设计、排版、动画和响应式样式。
-- `script.js`：导航、内容生成和秘方模态层等交互。
-- `content.js`：作品、秘方、联系方式和页面文字数据。
-- `assets/`：图片、音频和公开文件。
-- `docs/PROJECT_BRIEF.md`：唯一的正式项目说明文件。
-- `docs/`：风格指南、内容规划、任务进度和其他项目文档。
+- HTML
+- CSS
+- Vanilla JavaScript
+- GitHub Pages
 
-## 在电脑上预览
+## 项目特点
 
-请在 VS Code 中打开这个项目文件夹，再打开“终端”。确认终端当前位于项目根目录后，运行：
+- 响应式设计，适配桌面端、平板端和手机端；
+- 页面内容与作品、秘方、联系方式数据由 `content.js` 集中管理；
+- 不使用前端框架，也没有构建依赖；
+- 支持音频、文件下载与无障碍键盘操作。
 
-```bash
-python -m http.server 8000
-```
+## 本地预览
 
-如果电脑上的 Python 命令是 `python3`，则运行：
+在项目根目录打开终端，运行：
 
 ```bash
 python3 -m http.server 8000
 ```
 
-然后在浏览器访问：
-
-```text
-http://localhost:8000
-```
-
-停止本地预览时，回到终端按 `Control + C`。
-
-## 内容维护
-
-作品、烘焙秘方、联系方式和页面文字集中在 `content.js`。更新内容时优先修改该文件，不需要在 `index.html` 中重复编写卡片。
+然后访问 [http://localhost:8000](http://localhost:8000)。停止预览时，在终端按 `Control + C`。
