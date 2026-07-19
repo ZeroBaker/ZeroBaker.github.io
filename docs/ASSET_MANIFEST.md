@@ -19,7 +19,7 @@
 
 | 素材路径 | 用途 | 状态 | 处理或设计要求 | 当前文件 |
 | --- | --- | --- | --- | --- |
-| `assets/images/about/about-main-collage.webp` | 自我介绍人物拼贴 | WebP 已接入，待视觉验收 | 保持透明背景和原始比例；电脑端配合板块内 sticky，手机端取消 sticky 并居中显示 | WebP：1199 × 1596、529.8 KiB、质量 90，保留 Alpha 透明通道；原 PNG：1199 × 1596、3.28 MiB，暂时保留 |
+| `assets/images/about/about-main-collage.webp` | 自我介绍人物拼贴 | 当前正式使用版本，已通过视觉验收 | 保持透明背景和原始比例；电脑端配合板块内 sticky，手机端取消 sticky 并居中显示 | WebP：1199 × 1596、529.8 KiB、质量 90，保留 Alpha 透明通道；旧版 PNG：1199 × 1596、3.28 MiB，已由WebP替代，仓库工作区已删除，原版本保留在Git历史中 |
 
 ## 作品展示正式素材
 
@@ -38,9 +38,9 @@
 | `assets/images/recipes/recipe-travel.jpg` | Recipe Note 02：好喜欢海边 | 已接入并通过验收 | 保持原比例；米灰色强调仅用于编号、胶带和细节 | 1280 × 1708 JPEG；路径、加载、比例与显示效果验收通过 |
 | `assets/images/recipes/recipe-fandom.jpg` | Recipe Note 03：热爱从线上到线下 | 已接入并通过验收 | 保持原比例；陶土色强调仅用于编号、胶带和细节 | 1279 × 1706 JPEG；路径、加载、比例与显示效果验收通过 |
 | `assets/images/recipes/recipe-currently-watching.jpg` | Recipe Note 04：最近在看的 | 已接入并通过验收 | 保持原比例；灰蓝色强调仅用于编号、胶带和细节 | 450 × 600 PNG 内容，保留现有 `.jpg` 文件名；路径、加载、比例与显示效果验收通过 |
-| `assets/images/recipes/recipe-song.webp` | Recipe Note 05：最近在听的 | WebP 已接入，待视觉验收 | 保持原比例；蓝色强调仅用于编号、胶带和细节 | WebP：1600 × 1600、146.8 KiB、质量 86；原文件：1920 × 1920、3.28 MiB，扩展名为 `.jpg`、实际为 PNG，暂时保留 |
-| `assets/images/recipes/recipe-vibe-coding.webp` | Recipe Note 06：最近感兴趣的事 | WebP 已接入，待视觉验收 | 保持原比例；砖红色强调仅用于编号、胶带和细节 | WebP：1600 × 1040、89.1 KiB、质量 88；原 PNG：2560 × 1664、5.40 MiB，含 RGBA 通道但 Alpha 全部为 255、实际无透明像素，暂时保留 |
-| `assets/images/recipes/recipe-daily-moment.webp` | Recipe Note 07：一个生活的瞬间 | WebP 已接入，待视觉验收 | 保持原比例；莓果红强调仅用于编号、胶带和细节 | WebP：1200 × 1600、313.6 KiB、质量 86；原 JPEG：3000 × 4000、5.83 MiB，暂时保留 |
+| `assets/images/recipes/recipe-song.webp` | Recipe Note 05：最近在听的 | 当前正式使用版本，已通过视觉验收 | 保持原比例；蓝色强调仅用于编号、胶带和细节 | WebP：1600 × 1600、146.8 KiB、质量 86；旧版文件：1920 × 1920、3.28 MiB，扩展名为 `.jpg`、实际为 PNG，已由WebP替代，仓库工作区已删除，原版本保留在Git历史中 |
+| `assets/images/recipes/recipe-vibe-coding.webp` | Recipe Note 06：最近感兴趣的事 | 当前正式使用版本，已通过视觉验收 | 保持原比例；砖红色强调仅用于编号、胶带和细节 | WebP：1600 × 1040、89.1 KiB、质量 88；旧版 PNG：2560 × 1664、5.40 MiB，含 RGBA 通道但 Alpha 全部为 255、实际无透明像素，已由WebP替代，仓库工作区已删除，原版本保留在Git历史中 |
+| `assets/images/recipes/recipe-daily-moment.webp` | Recipe Note 07：一个生活的瞬间 | 当前正式使用版本，已通过视觉验收 | 保持原比例；莓果红强调仅用于编号、胶带和细节 | WebP：1200 × 1600、313.6 KiB、质量 86；旧版 JPEG：3000 × 4000、5.83 MiB，已由WebP替代，仓库工作区已删除，原版本保留在Git历史中 |
 | `assets/audio/recipe-gemini-clip.mp3` | Recipe Note 05 原生音频试听 | 已接入并通过验收 | 使用 `<audio controls>`、`preload="metadata"`，不自动播放 | MP3；加载、播放、键盘操作与关闭处理验收通过 |
 | `assets/downloads/tata-codex-pet-pack.zip` | Recipe Note 06 TATA Codex桌宠下载包 | 已接入并通过验收 | 下载链接使用 `download` 属性，下载名保持 `tata-codex-pet-pack.zip` | ZIP；下载路径、`download` 属性与下载文件名验收通过 |
 
@@ -56,6 +56,13 @@
 - GitHub 仓库只存放经过确认、可以公开展示的最终素材；
 - 处理人物照片前，应再次检查隐私、肖像和背景中的可识别信息；
 - 不用参考图、原始照片或临时导出文件占用上表中的正式路径。
+
+## 大图性能优化与旧资源清理
+
+- 清理前总大小：18.84 MiB（四个旧版大图与四个正式 WebP）；
+- 清理后总大小：1.05 MiB（四个正式 WebP）；
+- 仓库工作区减少：18,652,988 字节，约 17.79 MiB（约 94.4%）；
+- 四个旧版文件均已由WebP替代，仓库工作区已删除，原版本保留在Git历史中。
 
 ## 状态说明
 
