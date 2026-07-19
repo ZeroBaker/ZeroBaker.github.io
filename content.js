@@ -282,10 +282,50 @@ window.siteData = {
     },
   ],
 
-  socialLinks: [
-    { label: "小红书", url: "#" },
-    { label: "抖音", url: "#" },
-    { label: "Bilibili", url: "#" },
-    { label: "邮箱", url: "mailto:your-email@example.com" },
-  ],
+  // 联系方式的标题、文案、图片、四个入口与页脚文字都在这里维护。
+  contact: {
+    title: "联系方式",
+    englishTitle: "FIND ME",
+    introChinese:
+      "欢迎来找我。也许我们可以交换最近的喜欢，或者一起做点有意思的事。",
+    introEnglish:
+      "Let’s share something we love — or make something new together.",
+    image: {
+      src: "assets/images/contact/contact-dessert-photo.jpg",
+      alt: "装饰着草莓塔、花束与 Best wish 字样的甜品拼贴照片",
+    },
+    links: [
+      {
+        label: "小红书",
+        english: "XIAOHONGSHU",
+        url: "https://xhslink.com/m/2Azd0lCD9H8",
+        type: "external",
+      },
+      {
+        label: "哔哩哔哩",
+        english: "BILIBILI",
+        url: "https://b23.tv/Kq9ttAr",
+        type: "external",
+      },
+      {
+        label: "抖音",
+        english: "DOUYIN",
+        url: "https://v.douyin.com/q73g2FXvflE",
+        type: "external",
+      },
+      {
+        label: "邮箱",
+        english: "EMAIL",
+        display: "bhnmj@qq.com",
+        url: "mailto:bhnmj@qq.com",
+        type: "email",
+      },
+    ],
+    closingLine: "Maybe we could be slow dancing",
+  },
+
+  footer: {
+    siteName: "ZeroBaker",
+    message: "Made with curiosity, AI and a little courage.",
+  },
 };

@@ -433,13 +433,6 @@ h2 {
   font-size: clamp(0.55rem, 0.78vw, 0.66rem);
 }
 
-.contact-layout {
-  display: grid;
-  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
-  gap: clamp(28px, 6vw, 72px);
-  align-items: start;
-}
-
 /* 自我介绍：左侧人物拼贴与右侧三份 Recipe 共同组成一页手帐。 */
 .about-section {
   overflow-x: clip;
@@ -1587,25 +1580,237 @@ body.is-recipe-modal-open {
   to { opacity: 1; }
 }
 
+/* 联系方式：像离开线上烘焙坊前收到的一张邀请卡。 */
+.contact-section {
+  position: relative;
+  min-height: 88vh;
+  padding-top: clamp(110px, 11vw, 154px);
+  padding-bottom: clamp(76px, 8vw, 112px);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 11% 72%, rgba(112, 139, 97, 0.08), transparent 20%),
+    linear-gradient(180deg, rgba(238, 228, 215, 0.35), rgba(246, 240, 231, 0));
+}
+
+.contact-layout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+  grid-template-areas:
+    "heading photo"
+    "intro photo"
+    "links photo";
+  gap: 0 clamp(46px, 7vw, 92px);
+  align-items: start;
+}
+
+.contact-heading {
+  grid-area: heading;
+  align-self: end;
+}
+
+.contact-heading h2 {
+  margin-bottom: clamp(22px, 2.8vw, 34px);
+}
+
+.contact-intro {
+  grid-area: intro;
+  max-width: 490px;
+}
+
+.contact-intro-cn {
+  margin-bottom: 13px;
+  font-size: clamp(1rem, 1.35vw, 1.12rem);
+  line-height: 1.9;
+}
+
+.contact-intro-en {
+  margin-bottom: 0;
+  color: var(--color-caramel);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.88rem, 1.15vw, 1rem);
+  font-style: italic;
+  line-height: 1.65;
+}
+
+.contact-photo {
+  position: relative;
+  grid-area: photo;
+  width: min(88%, 540px);
+  justify-self: center;
+  margin: 4px 0 0;
+  padding: clamp(9px, 1.1vw, 14px) clamp(9px, 1.1vw, 14px) clamp(26px, 3vw, 38px);
+  background: #fffaf2;
+  box-shadow: 0 22px 48px rgba(83, 58, 43, 0.14);
+  transform: rotate(0.65deg);
+}
+
+.contact-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  background: #f5eee4;
+  object-fit: contain;
+}
+
+.contact-photo-tape {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  z-index: 2;
+  width: clamp(82px, 10vw, 124px);
+  height: 31px;
+  background: rgba(206, 185, 145, 0.64);
+  box-shadow: 0 1px 2px rgba(86, 64, 45, 0.08);
+  transform: translateX(-50%) rotate(-2.5deg);
+}
+
 .social-links {
+  grid-area: links;
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  max-width: 520px;
+  flex-direction: column;
+  margin-top: clamp(32px, 4vw, 52px);
+  border-top: 1px solid rgba(91, 70, 57, 0.22);
 }
 
 .social-link {
-  display: inline-flex;
-  padding: 10px 16px;
-  border: 1px solid var(--color-line);
-  border-radius: 999px;
-  background: var(--color-white);
+  position: relative;
+  display: flex;
+  min-height: 72px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 12px 4px 12px 2px;
+  border-bottom: 1px solid rgba(91, 70, 57, 0.22);
   text-decoration: none;
+  transition: color 170ms ease, padding 170ms ease, background-color 170ms ease;
+}
+
+.social-link::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  content: "";
+  background: var(--color-strawberry);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 170ms ease;
+}
+
+.social-link-name {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0 12px;
+  align-items: baseline;
+}
+
+.social-link-label {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.social-link-english {
+  color: var(--color-muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+}
+
+.social-link-value {
+  grid-column: 1 / -1;
+  margin-top: 2px;
+  color: var(--color-caramel);
+  font-size: 0.84rem;
+  overflow-wrap: anywhere;
+}
+
+.social-link-icon {
+  flex: 0 0 auto;
+  color: var(--color-matcha);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.12rem;
+  font-weight: 700;
+  transition: transform 170ms ease;
 }
 
 .social-link:hover,
 .social-link:focus-visible {
-  border-color: var(--color-strawberry);
+  padding-right: 2px;
+  padding-left: 8px;
   color: var(--color-strawberry);
+  background: rgba(255, 250, 242, 0.34);
+}
+
+.social-link:hover::after,
+.social-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.social-link:hover .social-link-icon,
+.social-link:focus-visible .social-link-icon {
+  transform: translateX(4px);
+}
+
+.contact-decorations,
+.contact-decoration {
+  position: absolute;
+  pointer-events: none;
+}
+
+.contact-decorations {
+  inset: 0;
+  z-index: 1;
+}
+
+.contact-decoration--fork {
+  bottom: 10%;
+  left: max(20px, calc((100vw - var(--content-width)) / 2 - 48px));
+  width: 13px;
+  height: 82px;
+  border: 2px solid rgba(154, 104, 71, 0.22);
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  transform: rotate(18deg);
+}
+
+.contact-decoration--fork::before {
+  position: absolute;
+  top: -24px;
+  left: -6px;
+  width: 21px;
+  height: 27px;
+  content: "";
+  border-top: 2px solid rgba(154, 104, 71, 0.22);
+  border-right: 2px solid rgba(154, 104, 71, 0.22);
+  border-left: 2px solid rgba(154, 104, 71, 0.22);
+  border-radius: 7px 7px 0 0;
+}
+
+.contact-decoration--crumbs {
+  top: 15%;
+  right: 4%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(154, 104, 71, 0.2);
+  box-shadow: 18px 12px 0 -1px rgba(154, 104, 71, 0.17), 7px 27px 0 -2px rgba(112, 139, 97, 0.22);
+}
+
+.contact-decoration--curve {
+  right: 3%;
+  bottom: 16%;
+  width: 150px;
+  height: 66px;
+  border-top: 2px solid rgba(112, 139, 97, 0.17);
+  border-radius: 50%;
+  transform: rotate(-13deg);
 }
 
 .closing-line {
@@ -1619,10 +1824,11 @@ body.is-recipe-modal-open {
 }
 
 .site-footer {
-  padding: 24px;
+  padding: 26px 24px;
   background: var(--color-ink);
   color: var(--color-paper);
   font-size: 0.85rem;
+  letter-spacing: 0.025em;
   text-align: center;
 }
 
@@ -1803,10 +2009,28 @@ body.is-recipe-modal-open {
 
   .contact-layout {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "heading"
+      "intro"
+      "photo"
+      "links";
   }
 
-  .contact-photo-placeholder {
-    min-height: 320px;
+  .contact-intro {
+    max-width: 620px;
+  }
+
+  .contact-photo {
+    width: min(100%, 560px);
+    justify-self: center;
+    margin-top: 54px;
+  }
+
+  .social-links {
+    width: min(100%, 560px);
+    max-width: none;
+    justify-self: center;
+    margin-top: 48px;
   }
 
   .about-heading {
@@ -1905,6 +2129,75 @@ body.is-recipe-modal-open {
   .section {
     padding-right: 18px;
     padding-left: 18px;
+  }
+
+  .contact-section {
+    min-height: 0;
+    padding-top: 92px;
+    padding-bottom: 76px;
+  }
+
+  .contact-heading h2 {
+    margin-bottom: 20px;
+  }
+
+  .contact-intro-cn {
+    font-size: 0.98rem;
+    line-height: 1.85;
+  }
+
+  .contact-intro-en {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+  }
+
+  .contact-photo {
+    width: min(88%, 430px);
+    margin-top: 42px;
+    padding: 8px 8px 28px;
+    transform: rotate(0.35deg);
+  }
+
+  .contact-photo-tape {
+    top: -11px;
+    height: 27px;
+  }
+
+  .social-links {
+    margin-top: 40px;
+  }
+
+  .social-link {
+    min-height: 74px;
+    padding-right: 2px;
+  }
+
+  .social-link-name {
+    gap: 0 9px;
+  }
+
+  .social-link-english {
+    font-size: 0.64rem;
+    letter-spacing: 0.09em;
+  }
+
+  .closing-line {
+    width: 100%;
+    margin-top: 64px;
+    padding: 0 10px;
+    font-size: clamp(1.3rem, 7vw, 1.75rem);
+    line-height: 1.35;
+  }
+
+  .contact-decoration--fork,
+  .contact-decoration--curve {
+    display: none;
+  }
+
+  .site-footer {
+    padding: 24px 18px;
+    line-height: 1.75;
   }
 
   .recipes-section {
@@ -2203,6 +2496,13 @@ body.is-recipe-modal-open {
   .recipe-modal-backdrop,
   .recipe-modal-paper {
     animation: none;
+  }
+
+  .social-link:hover,
+  .social-link:focus-visible,
+  .social-link:hover .social-link-icon,
+  .social-link:focus-visible .social-link-icon {
+    transform: none;
   }
 }
 

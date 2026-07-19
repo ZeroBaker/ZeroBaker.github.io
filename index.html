@@ -124,24 +124,45 @@
         </div>
       </section>
 
-      <section id="contact" class="section" aria-labelledby="contact-title">
-        <div class="section-inner contact-layout">
-          <div>
-            <p class="eyebrow">Find Me</p>
-            <h2 id="contact-title">联系方式</h2>
-            <p class="section-lead">欢迎通过下面的公开渠道找到我。</p>
-            <div class="social-links" data-social-links></div>
-          </div>
-          <div class="placeholder contact-photo-placeholder" role="img" aria-label="甜品照片占位区域">
-            甜品照片占位：assets/images/contact/contact-dessert.jpg
-          </div>
+      <section id="contact" class="section contact-section" aria-labelledby="contact-title">
+        <div class="contact-decorations" aria-hidden="true">
+          <span class="contact-decoration contact-decoration--fork"></span>
+          <span class="contact-decoration contact-decoration--crumbs"></span>
+          <span class="contact-decoration contact-decoration--curve"></span>
         </div>
-        <p class="closing-line">Maybe we could be slow dancing</p>
+        <div class="section-inner contact-layout">
+          <header class="contact-heading">
+            <p class="eyebrow" data-contact-english-title></p>
+            <h2 id="contact-title" data-contact-title></h2>
+          </header>
+          <div class="contact-intro">
+            <p class="contact-intro-cn" data-contact-intro-cn></p>
+            <p class="contact-intro-en" data-contact-intro-en></p>
+          </div>
+          <figure class="contact-photo">
+            <span class="contact-photo-tape" aria-hidden="true"></span>
+            <img
+              data-contact-image
+              width="1280"
+              height="1280"
+              loading="lazy"
+              decoding="async"
+            >
+          </figure>
+          <div class="social-links" aria-label="公开联系方式" data-social-links></div>
+        </div>
+        <p class="closing-line" data-contact-closing-line></p>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>© <span data-current-year></span> Wang Junyi · Made with curiosity and care.</p>
+      <p>
+        <span data-footer-site-name></span>
+        <span aria-hidden="true"> · </span>
+        <span data-current-year></span>
+        <span aria-hidden="true"> · </span>
+        <span data-footer-message></span>
+      </p>
     </footer>
 
     <noscript>

@@ -447,25 +447,74 @@
     });
   };
 
-  const renderSocialLinks = () => {
+  const renderContact = () => {
     const container = document.querySelector("[data-social-links]");
-    if (!container) return;
+    const contact = data.contact;
+    if (!container || !contact || !Array.isArray(contact.links)) return;
 
-    data.socialLinks.forEach((social) => {
-      const link = createTextElement("a", "social-link", social.label);
-      link.href = social.url;
+    const englishTitle = document.querySelector("[data-contact-english-title]");
+    const title = document.querySelector("[data-contact-title]");
+    const introChinese = document.querySelector("[data-contact-intro-cn]");
+    const introEnglish = document.querySelector("[data-contact-intro-en]");
+    const image = document.querySelector("[data-contact-image]");
+    const closingLine = document.querySelector("[data-contact-closing-line]");
 
-      if (social.url === "#") {
-        link.classList.add("is-disabled");
-        link.setAttribute("aria-disabled", "true");
-        link.addEventListener("click", (event) => event.preventDefault());
-      } else if (!social.url.startsWith("mailto:")) {
+    if (englishTitle) englishTitle.textContent = contact.englishTitle;
+    if (title) title.textContent = contact.title;
+    if (introChinese) introChinese.textContent = contact.introChinese;
+    if (introEnglish) introEnglish.textContent = contact.introEnglish;
+    if (closingLine) closingLine.textContent = contact.closingLine;
+    if (image && contact.image) {
+      image.src = contact.image.src;
+      image.alt = contact.image.alt;
+    }
+
+    contact.links.forEach((item) => {
+      const link = document.createElement("a");
+      link.className = "social-link";
+      link.href = item.url;
+
+      const name = document.createElement("span");
+      name.className = "social-link-name";
+      name.append(
+        createTextElement("span", "social-link-label", item.label),
+        createTextElement("span", "social-link-english", item.english),
+      );
+
+      if (item.display) {
+        name.append(createTextElement("span", "social-link-value", item.display));
+      }
+
+      const icon = createTextElement(
+        "span",
+        "social-link-icon",
+        item.type === "email" ? "@" : "↗",
+      );
+      icon.setAttribute("aria-hidden", "true");
+      link.append(name, icon);
+
+      if (item.type === "external") {
         link.target = "_blank";
         link.rel = "noopener noreferrer";
+        link.setAttribute(
+          "aria-label",
+          `${item.label}，${item.english}（在新标签页打开）`,
+        );
+      } else {
+        link.setAttribute(
+          "aria-label",
+          `${item.label}，${item.english}：${item.display}`,
+        );
       }
 
       container.append(link);
     });
+
+    const footer = data.footer;
+    const footerSiteName = document.querySelector("[data-footer-site-name]");
+    const footerMessage = document.querySelector("[data-footer-message]");
+    if (footerSiteName && footer) footerSiteName.textContent = footer.siteName;
+    if (footerMessage && footer) footerMessage.textContent = footer.message;
   };
 
   const setupNavigation = () => {
@@ -521,7 +570,7 @@
     renderProjects();
     renderRecipes();
     setupRecipeModal();
-    renderSocialLinks();
+    renderContact();
     setupNavigation();
   };
 

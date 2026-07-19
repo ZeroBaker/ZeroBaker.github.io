@@ -112,14 +112,30 @@
 
 ## 联系方式 / FIND ME
 
-需要展示：
+板块定位：访客逛完 ZeroBaker 线上烘焙坊后收到的最后一张邀请卡，提供继续找到站主的入口，不使用商务表单或求职话术。
 
-- 小红书主页；
-- 抖音主页；
-- Bilibili 主页；
-- 公开邮箱；
-- 联系页甜品照片。
+固定文案：
 
-网站不提供简历下载，也不设置公开版简历入口；联系方式继续保留。
+- 中文标题：`联系方式`；
+- 英文标题：`FIND ME`；
+- 中文文案：`欢迎来找我。也许我们可以交换最近的喜欢，或者一起做点有意思的事。`；
+- 英文文案：`Let’s share something we love — or make something new together.`；
+- 页面收尾装饰文字：`Maybe we could be slow dancing`。
 
-不要在公开页面放手机号、未公开公司资料或其他敏感信息。
+正式联系方式：
+
+| 中文名称 | 英文名称 | 显示内容 | 链接 |
+| --- | --- | --- | --- |
+| `小红书` | `XIAOHONGSHU` | — | `https://xhslink.com/m/2Azd0lCD9H8` |
+| `哔哩哔哩` | `BILIBILI` | — | `https://b23.tv/Kq9ttAr` |
+| `抖音` | `DOUYIN` | — | `https://v.douyin.com/q73g2FXvflE` |
+| `邮箱` | `EMAIL` | `bhnmj@qq.com` | `mailto:bhnmj@qq.com` |
+
+内容与交互规则：
+
+- 标题、两段文案、平台名称、链接、邮箱、图片信息、收尾句与页脚文字由 `content.js` 统一管理；
+- 甜品照片使用 `assets/images/contact/contact-dessert-photo.jpg`，保持完整正方形画面，不裁切草莓塔主体、主要花束和 `Best wish` 字样；
+- 小红书、哔哩哔哩和抖音在新标签页打开，并使用 `rel="noopener noreferrer"`；邮箱使用 `mailto:`，不打开新标签页；
+- 电脑端使用左侧文字与联系方式、右侧照片的双列布局；手机端依次显示标题、文案、照片和四个联系方式；
+- 页脚显示 `ZeroBaker`、当前年份和 `Made with curiosity, AI and a little courage.`；
+- 不放二维码、手机号、微信号、简历下载、公开版简历入口或留言表单。

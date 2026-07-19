@@ -2,7 +2,7 @@
 
 ## 当前用途
 
-这份清单记录首页、自我介绍、作品展示和烘焙秘方正式素材的固定路径、用途、处理状态和设计要求。后续处理或生成素材时，应使用表中的文件名，不随意更名；素材完成并确认可以公开后，再放入对应路径。
+这份清单记录首页、自我介绍、作品展示、烘焙秘方和联系方式正式素材的固定路径、用途、处理状态和设计要求。后续处理或生成素材时，应使用表中的文件名，不随意更名；素材完成并确认可以公开后，再放入对应路径。
 
 ## 首页正式素材
 
@@ -43,6 +43,12 @@
 | `assets/images/recipes/recipe-daily-moment.jpg` | Recipe Note 07：一个生活的瞬间 | 已接入并通过验收 | 保持原比例；莓果红强调仅用于编号、胶带和细节 | 3000 × 4000 JPEG；路径、加载、比例与显示效果验收通过 |
 | `assets/audio/recipe-gemini-clip.mp3` | Recipe Note 05 原生音频试听 | 已接入并通过验收 | 使用 `<audio controls>`、`preload="metadata"`，不自动播放 | MP3；加载、播放、键盘操作与关闭处理验收通过 |
 | `assets/downloads/tata-codex-pet-pack.zip` | Recipe Note 06 TATA Codex桌宠下载包 | 已接入并通过验收 | 下载链接使用 `download` 属性，下载名保持 `tata-codex-pet-pack.zip` | ZIP；下载路径、`download` 属性与下载文件名验收通过 |
+
+## 联系方式正式素材
+
+| 素材路径 | 用途 | 状态 | 处理或设计要求 | 当前文件 |
+| --- | --- | --- | --- | --- |
+| `assets/images/contact/contact-dessert-photo.jpg` | 联系方式右侧甜品相片 | 已接入并通过验收 | 保持正方形原始比例，优先使用 `object-fit: contain`，不得裁掉草莓塔主体、主要花束和 `Best wish` 字样 | 1280 × 1280 JPEG；路径、加载、比例、响应式、无障碍与显示效果验收通过 |
 
 ## 素材公开与隐私规则
 
