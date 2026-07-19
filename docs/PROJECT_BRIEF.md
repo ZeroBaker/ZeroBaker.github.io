@@ -65,7 +65,7 @@ The homepage contains:
 * a cut-out photo taken in Jeju Island;
 * four illustrated cake slices that link to the four main sections.
 
-The four cake images will be generated separately later. Keep the current placeholder paths until the final assets are ready.
+The four final cake images have been integrated as links to the four main sections.
 
 Homepage copy:
 

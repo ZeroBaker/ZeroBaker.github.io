@@ -2,7 +2,7 @@
 
 ## Project purpose
 
-This repository contains Wang Junyi's personal portfolio website, presented as an online bakery named "zerobaker".
+This repository contains Wang Junyi's personal portfolio website, presented as an online bakery named "ZeroBaker".
 
 The website is not only for job applications. It should present her experiences, achievements, interests, aesthetics, personality, and first vibe-coding project.
 

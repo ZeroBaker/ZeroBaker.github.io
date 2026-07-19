@@ -2108,6 +2108,59 @@ body.is-recipe-modal-open {
   }
 }
 
+@media (min-width: 561px) and (max-width: 860px) {
+  .recipe-paper-field {
+    gap: 42px 24px;
+  }
+
+  .recipe-paper-ball:nth-child(1) {
+    --grid-x: -36px;
+    --grid-y: -5px;
+  }
+
+  .recipe-paper-ball:nth-child(2) {
+    --grid-x: 30px;
+    --grid-y: 30px;
+  }
+
+  .recipe-paper-ball:nth-child(3) {
+    --grid-x: 24px;
+    --grid-y: 18px;
+  }
+
+  .recipe-paper-ball:nth-child(4) {
+    --grid-x: -30px;
+    --grid-y: -8px;
+  }
+
+  .recipe-paper-ball:nth-child(5) {
+    --grid-x: -26px;
+    --grid-y: -5px;
+  }
+
+  .recipe-paper-ball:nth-child(6) {
+    --grid-x: 34px;
+    --grid-y: 22px;
+  }
+
+  .recipe-paper-ball:nth-child(7) {
+    --grid-x: 8px;
+    --grid-y: 6px;
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 861px) and (max-width: 1100px) and (min-height: 1100px) {
+  .contact-section {
+    min-height: 1100px;
+    padding-bottom: 64px;
+  }
+
+  .closing-line {
+    margin-top: 160px;
+  }
+}
+
 @media (max-width: 560px) {
   .site-nav {
     right: 18px;
@@ -2183,9 +2236,9 @@ body.is-recipe-modal-open {
   }
 
   .closing-line {
-    width: 100%;
+    width: min(100%, 265px);
     margin-top: 64px;
-    padding: 0 10px;
+    padding: 0;
     font-size: clamp(1.3rem, 7vw, 1.75rem);
     line-height: 1.35;
   }
@@ -2198,6 +2251,12 @@ body.is-recipe-modal-open {
   .site-footer {
     padding: 24px 18px;
     line-height: 1.75;
+  }
+
+  .site-footer p {
+    max-width: 280px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .recipes-section {
@@ -2225,6 +2284,42 @@ body.is-recipe-modal-open {
     height: 150px;
     min-height: 0;
     padding: 25px 17px;
+  }
+
+  .recipe-paper-ball:nth-child(1) {
+    --grid-x: -10px;
+    --grid-y: 3px;
+  }
+
+  .recipe-paper-ball:nth-child(2) {
+    --grid-x: 11px;
+    --grid-y: 23px;
+  }
+
+  .recipe-paper-ball:nth-child(3) {
+    --grid-x: 12px;
+    --grid-y: -5px;
+  }
+
+  .recipe-paper-ball:nth-child(4) {
+    --grid-x: -9px;
+    --grid-y: 17px;
+  }
+
+  .recipe-paper-ball:nth-child(5) {
+    --grid-x: -13px;
+    --grid-y: 18px;
+  }
+
+  .recipe-paper-ball:nth-child(6) {
+    --grid-x: 12px;
+    --grid-y: -4px;
+  }
+
+  .recipe-paper-ball:nth-child(7) {
+    --grid-x: 4px;
+    --grid-y: 5px;
+    grid-column: 1 / -1;
   }
 
   .recipe-paper-ball-hint {

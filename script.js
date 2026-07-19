@@ -371,6 +371,10 @@
       const image = document.createElement("img");
       image.src = recipe.image;
       image.alt = recipe.imageAlt || recipe.title;
+      if (recipe.imageWidth && recipe.imageHeight) {
+        image.width = recipe.imageWidth;
+        image.height = recipe.imageHeight;
+      }
       image.loading = "eager";
       image.decoding = "async";
       imageFrame.append(image);
@@ -560,6 +564,23 @@
     updateHeader();
   };
 
+  const restoreInitialAnchor = () => {
+    if (!window.location.hash) return;
+
+    const targetId = decodeURIComponent(window.location.hash.slice(1));
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    // 动态卡片渲染完成后重新定位，避免刷新带锚点的网址时停在旧位置。
+    window.requestAnimationFrame(() => {
+      const root = document.documentElement;
+      const previousScrollBehavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      target.scrollIntoView({ block: "start" });
+      root.style.scrollBehavior = previousScrollBehavior;
+    });
+  };
+
   const initializePage = () => {
     const year = document.querySelector("[data-current-year]");
     if (year) year.textContent = String(new Date().getFullYear());
@@ -572,6 +593,7 @@
     setupRecipeModal();
     renderContact();
     setupNavigation();
+    restoreInitialAnchor();
   };
 
   if (document.readyState === "loading") {
