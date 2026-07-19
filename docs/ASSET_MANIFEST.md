@@ -19,7 +19,7 @@
 
 | 素材路径 | 用途 | 状态 | 处理或设计要求 | 当前文件 |
 | --- | --- | --- | --- | --- |
-| `assets/images/about/about-main-collage.png` | 自我介绍人物拼贴 | 已接入并通过验收 | 保持透明背景和原始比例；电脑端配合板块内 sticky，手机端取消 sticky 并居中显示 | 已用于自我介绍板块；路径、比例、响应式、无障碍与显示效果验收通过 |
+| `assets/images/about/about-main-collage.webp` | 自我介绍人物拼贴 | WebP 已接入，待视觉验收 | 保持透明背景和原始比例；电脑端配合板块内 sticky，手机端取消 sticky 并居中显示 | WebP：1199 × 1596、529.8 KiB、质量 90，保留 Alpha 透明通道；原 PNG：1199 × 1596、3.28 MiB，暂时保留 |
 
 ## 作品展示正式素材
 
@@ -38,9 +38,9 @@
 | `assets/images/recipes/recipe-travel.jpg` | Recipe Note 02：好喜欢海边 | 已接入并通过验收 | 保持原比例；米灰色强调仅用于编号、胶带和细节 | 1280 × 1708 JPEG；路径、加载、比例与显示效果验收通过 |
 | `assets/images/recipes/recipe-fandom.jpg` | Recipe Note 03：热爱从线上到线下 | 已接入并通过验收 | 保持原比例；陶土色强调仅用于编号、胶带和细节 | 1279 × 1706 JPEG；路径、加载、比例与显示效果验收通过 |
 | `assets/images/recipes/recipe-currently-watching.jpg` | Recipe Note 04：最近在看的 | 已接入并通过验收 | 保持原比例；灰蓝色强调仅用于编号、胶带和细节 | 450 × 600 PNG 内容，保留现有 `.jpg` 文件名；路径、加载、比例与显示效果验收通过 |
-| `assets/images/recipes/recipe-song.jpg` | Recipe Note 05：最近在听的 | 已接入并通过验收 | 保持原比例；蓝色强调仅用于编号、胶带和细节 | 1920 × 1920 PNG 内容，保留现有 `.jpg` 文件名；路径、加载、比例与显示效果验收通过 |
-| `assets/images/recipes/recipe-vibe-coding.png` | Recipe Note 06：最近感兴趣的事 | 已接入并通过验收 | 保持原比例和透明通道；砖红色强调仅用于编号、胶带和细节 | 2560 × 1664 PNG；路径、加载、比例与显示效果验收通过 |
-| `assets/images/recipes/recipe-daily-moment.jpg` | Recipe Note 07：一个生活的瞬间 | 已接入并通过验收 | 保持原比例；莓果红强调仅用于编号、胶带和细节 | 3000 × 4000 JPEG；路径、加载、比例与显示效果验收通过 |
+| `assets/images/recipes/recipe-song.webp` | Recipe Note 05：最近在听的 | WebP 已接入，待视觉验收 | 保持原比例；蓝色强调仅用于编号、胶带和细节 | WebP：1600 × 1600、146.8 KiB、质量 86；原文件：1920 × 1920、3.28 MiB，扩展名为 `.jpg`、实际为 PNG，暂时保留 |
+| `assets/images/recipes/recipe-vibe-coding.webp` | Recipe Note 06：最近感兴趣的事 | WebP 已接入，待视觉验收 | 保持原比例；砖红色强调仅用于编号、胶带和细节 | WebP：1600 × 1040、89.1 KiB、质量 88；原 PNG：2560 × 1664、5.40 MiB，含 RGBA 通道但 Alpha 全部为 255、实际无透明像素，暂时保留 |
+| `assets/images/recipes/recipe-daily-moment.webp` | Recipe Note 07：一个生活的瞬间 | WebP 已接入，待视觉验收 | 保持原比例；莓果红强调仅用于编号、胶带和细节 | WebP：1200 × 1600、313.6 KiB、质量 86；原 JPEG：3000 × 4000、5.83 MiB，暂时保留 |
 | `assets/audio/recipe-gemini-clip.mp3` | Recipe Note 05 原生音频试听 | 已接入并通过验收 | 使用 `<audio controls>`、`preload="metadata"`，不自动播放 | MP3；加载、播放、键盘操作与关闭处理验收通过 |
 | `assets/downloads/tata-codex-pet-pack.zip` | Recipe Note 06 TATA Codex桌宠下载包 | 已接入并通过验收 | 下载链接使用 `download` 属性，下载名保持 `tata-codex-pet-pack.zip` | ZIP；下载路径、`download` 属性与下载文件名验收通过 |
 
