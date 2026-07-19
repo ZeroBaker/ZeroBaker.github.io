@@ -80,19 +80,35 @@
 
 ## 烘焙秘方 / SECRET RECIPES
 
-第一版规划 7 项：
+板块定位：七张带有个人语气的生活纸条，不作为履历、技能或作品展示。页面像一张散落着纸团、便签和生活碎片的私人工作台。
 
-- 我追的星；
-- 最近推荐的歌；
-- 最近在看的影视；
-- 最近感兴趣的事；
-- 一段旅行记忆；
-- 一个生活瞬间；
-- 最近想说的话。
+固定文案：
 
-每项需要：标题、一张图片、一段文字，以及可选的音频、视频或外部链接。
+- 中文标题：`烘焙秘方`；
+- 英文标题：`SECRET RECIPES`；
+- 引导文案：`这里藏着一些喜欢的事、最近的兴趣，以及想被好好保存的生活瞬间。点开纸团，看看我私藏的配方。`
 
-可在此板块或个人故事中进一步说明 `LAYOVER` 来自金泰亨首张个人专辑的灵感。
+七份正式内容：
+
+| 编号 | 标题 | 英文小标题 | 类型 | 图片 | 强调色 | 可选内容 |
+| --- | --- | --- | --- | --- | --- | --- |
+| `01` | `世界的选择是BTS` | `MY ONE & ONLY, BTS` | 追星 | `assets/images/recipes/recipe-bts.jpg` | `#A89BC7` | 无 |
+| `02` | `好喜欢海边` | `WHERE THE SEA HOLDS EVERYTHING` | 旅行 | `assets/images/recipes/recipe-travel.jpg` | `#D6C9B8` | 无 |
+| `03` | `热爱从线上到线下` | `FROM ONLINE LOVE TO OFFLINE ADVENTURES` | 追星 | `assets/images/recipes/recipe-fandom.jpg` | `#C98773` | Bilibili 外部链接 |
+| `04` | `最近在看的` | `CURRENTLY WATCHING` | 影视 | `assets/images/recipes/recipe-currently-watching.jpg` | `#7F8DA3` | 无 |
+| `05` | `最近在听的` | `ON REPEAT LATELY` | 音乐 | `assets/images/recipes/recipe-song.jpg` | `#6F8FAF` | 原生音频试听与 YouTube 外部链接 |
+| `06` | `最近感兴趣的事` | `MY LATEST RABBIT HOLE` | Vibe Coding | `assets/images/recipes/recipe-vibe-coding.png` | `#B8665C` | TATA Codex桌宠 ZIP 下载 |
+| `07` | `一个生活的瞬间` | `A MOMENT I’LL ALWAYS REMEMBER` | 日常 | `assets/images/recipes/recipe-daily-moment.jpg` | `#A46068` | 小红书外部链接 |
+
+内容与交互规则：
+
+- 标题、引导文案、七份正文、图片、链接、强调色、音频和下载文件统一由 `content.js` 管理；
+- `script.js` 根据 `recipeNotes` 数组生成纸团，并将所选内容渲染到一个通用展开纸张中；
+- 桌面端七个纸团不规则但平衡地散落，手机端使用两列不规则网格，极窄设备改为单列；
+- 展开纸张支持关闭按钮、背景空白和 Escape 键关闭，打开后移入焦点，关闭后焦点返回原纸团；
+- Note 05 仅使用原生 `<audio controls>`，不自动播放；关闭时暂停并归零；
+- 外部链接在新标签页打开并使用 `rel="noopener noreferrer"`；Note 06 下载链接使用 HTML `download` 属性；
+- 空链接、空音频或空下载字段不生成无效控件。
 
 ## 联系方式 / FIND ME
 

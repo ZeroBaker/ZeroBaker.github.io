@@ -221,18 +221,229 @@
 
   const renderRecipes = () => {
     const container = document.querySelector("[data-recipe-list]");
-    if (!container) return;
+    const section = data.recipesSection;
+    if (!container || !section || !Array.isArray(data.recipeNotes)) return;
 
-    data.recipes.forEach((recipe, index) => {
-      const card = document.createElement("article");
-      card.className = "recipe-card";
-      card.dataset.imagePath = recipe.image;
-      card.append(
-        createTextElement("span", "recipe-number", `Secret ${String(index + 1).padStart(2, "0")}`),
-        createTextElement("h3", "", recipe.title),
-        createTextElement("p", "", recipe.text),
+    const englishTitle = document.querySelector("[data-recipes-english-title]");
+    const title = document.querySelector("[data-recipes-title]");
+    const intro = document.querySelector("[data-recipes-intro]");
+    if (englishTitle) englishTitle.textContent = section.englishTitle;
+    if (title) title.textContent = section.title;
+    if (intro) intro.textContent = section.intro;
+
+    data.recipeNotes.forEach((recipe) => {
+      const paperBall = document.createElement("button");
+      paperBall.className = "recipe-paper-ball";
+      paperBall.type = "button";
+      paperBall.dataset.recipeId = recipe.id;
+      paperBall.style.setProperty("--note-accent", recipe.accent);
+      paperBall.setAttribute(
+        "aria-label",
+        `打开 Recipe Note ${recipe.number}：${recipe.title}`,
       );
-      container.append(card);
+
+      const number = createTextElement(
+        "span",
+        "recipe-paper-ball-number",
+        `NOTE ${recipe.number}`,
+      );
+      const type = createTextElement("span", "recipe-paper-ball-type", recipe.type);
+      const hint = createTextElement("span", "recipe-paper-ball-hint", recipe.title);
+      paperBall.append(number, type, hint);
+      container.append(paperBall);
+    });
+  };
+
+  const setupRecipeModal = () => {
+    const modal = document.querySelector("[data-recipe-modal]");
+    const dialog = document.querySelector("[data-recipe-dialog]");
+    const content = document.querySelector("[data-recipe-modal-content]");
+    const paperBalls = document.querySelectorAll(".recipe-paper-ball");
+    if (!modal || !dialog || !content || !paperBalls.length) return;
+
+    let returnFocusTarget = null;
+    let activeAudio = null;
+
+    const stopAudio = () => {
+      if (!activeAudio) return;
+      activeAudio.pause();
+      try {
+        activeAudio.currentTime = 0;
+      } catch (error) {
+        console.warn("音频尚未就绪，关闭秘方时无法重置进度。", error);
+      }
+      activeAudio = null;
+    };
+
+    const closeModal = () => {
+      if (modal.hidden) return;
+      stopAudio();
+      modal.hidden = true;
+      document.body.classList.remove("is-recipe-modal-open");
+      content.replaceChildren();
+      returnFocusTarget?.focus();
+      returnFocusTarget = null;
+    };
+
+    const createActionLink = (recipe) => {
+      if (!recipe.url || !recipe.linkLabel) return null;
+      const link = createTextElement("a", "recipe-modal-action", recipe.linkLabel);
+      link.href = recipe.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.setAttribute("aria-label", `${recipe.linkLabel}（在新标签页打开）`);
+      const icon = createTextElement("span", "recipe-modal-action-icon", "↗");
+      icon.setAttribute("aria-hidden", "true");
+      link.append(icon);
+      return link;
+    };
+
+    const createDownloadLink = (recipe) => {
+      if (!recipe.downloadFile || !recipe.downloadLabel) return null;
+      const link = createTextElement(
+        "a",
+        "recipe-modal-action recipe-modal-download",
+        recipe.downloadLabel,
+      );
+      link.href = recipe.downloadFile;
+      link.download = recipe.downloadName || "";
+      const icon = createTextElement("span", "recipe-modal-action-icon", "↓");
+      icon.setAttribute("aria-hidden", "true");
+      link.append(icon);
+      return link;
+    };
+
+    const createAudioPlayer = (recipe) => {
+      if (!recipe.audio) return null;
+
+      const audioBlock = document.createElement("div");
+      audioBlock.className = "recipe-audio-block";
+      const audioLabel = createTextElement(
+        "p",
+        "recipe-audio-label",
+        recipe.audioLabel || "试听音乐",
+      );
+      const audio = document.createElement("audio");
+      audio.className = "recipe-audio-player";
+      audio.controls = true;
+      audio.preload = "metadata";
+      audio.src = recipe.audio;
+      audio.setAttribute(
+        "aria-label",
+        `${recipe.title}：${recipe.audioLabel || "音乐试听"}`,
+      );
+      const errorMessage = createTextElement(
+        "p",
+        "recipe-audio-error",
+        "音频暂时无法加载，请稍后再试。",
+      );
+      errorMessage.hidden = true;
+      audio.addEventListener("error", () => {
+        errorMessage.hidden = false;
+      });
+      audioBlock.append(audioLabel, audio, errorMessage);
+      activeAudio = audio;
+      return audioBlock;
+    };
+
+    const openModal = (recipe, trigger) => {
+      stopAudio();
+      returnFocusTarget = trigger;
+      dialog.style.setProperty("--note-accent", recipe.accent);
+
+      const header = document.createElement("header");
+      header.className = "recipe-modal-header";
+      const title = createTextElement("h3", "recipe-modal-title", recipe.title);
+      title.id = "recipe-modal-title";
+      header.append(
+        createTextElement(
+          "span",
+          "recipe-modal-number",
+          `RECIPE NOTE ${recipe.number}`,
+        ),
+        title,
+        createTextElement("p", "recipe-modal-subtitle", recipe.subtitle),
+        createTextElement("span", "recipe-modal-type", recipe.type),
+      );
+
+      const imageFrame = document.createElement("figure");
+      imageFrame.className = "recipe-modal-image-frame";
+      const image = document.createElement("img");
+      image.src = recipe.image;
+      image.alt = recipe.imageAlt || recipe.title;
+      image.loading = "eager";
+      image.decoding = "async";
+      imageFrame.append(image);
+
+      const body = createTextElement("p", "recipe-modal-body", recipe.body);
+      body.id = "recipe-modal-body";
+      const details = document.createElement("div");
+      details.className = "recipe-modal-details";
+      details.append(header, body);
+
+      const audioBlock = createAudioPlayer(recipe);
+      if (audioBlock) details.append(audioBlock);
+
+      const actions = document.createElement("div");
+      actions.className = "recipe-modal-actions";
+      const externalLink = createActionLink(recipe);
+      const downloadLink = createDownloadLink(recipe);
+      if (externalLink) actions.append(externalLink);
+      if (downloadLink) actions.append(downloadLink);
+      if (actions.childElementCount) details.append(actions);
+
+      content.replaceChildren(imageFrame, details);
+      modal.hidden = false;
+      document.body.classList.add("is-recipe-modal-open");
+      dialog.scrollTop = 0;
+      dialog.focus();
+    };
+
+    paperBalls.forEach((paperBall) => {
+      paperBall.addEventListener("click", () => {
+        const recipe = data.recipeNotes.find(
+          (item) => item.id === paperBall.dataset.recipeId,
+        );
+        if (recipe) openModal(recipe, paperBall);
+      });
+    });
+
+    modal.querySelectorAll("[data-recipe-close]").forEach((closeControl) => {
+      closeControl.addEventListener("click", closeModal);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (modal.hidden) return;
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeModal();
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+      const focusableElements = Array.from(
+        dialog.querySelectorAll(
+          'button:not([disabled]), a[href], audio[controls], [tabindex]:not([tabindex="-1"])',
+        ),
+      );
+      if (!focusableElements.length) {
+        event.preventDefault();
+        dialog.focus();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      if (
+        event.shiftKey &&
+        (document.activeElement === firstElement || document.activeElement === dialog)
+      ) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
     });
   };
 
@@ -309,6 +520,7 @@
     setupAboutReveal();
     renderProjects();
     renderRecipes();
+    setupRecipeModal();
     renderSocialLinks();
     setupNavigation();
   };

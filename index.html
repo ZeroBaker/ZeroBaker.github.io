@@ -112,14 +112,15 @@
         </div>
       </section>
 
-      <section id="recipes" class="section section-tinted" aria-labelledby="recipes-title">
-        <div class="section-inner">
-          <p class="eyebrow">Secret Recipes</p>
-          <h2 id="recipes-title">烘焙秘方</h2>
-          <p class="section-lead">
-            音乐、旅行、影视、生活片段和最近感兴趣的事，会慢慢收藏在这里。
-          </p>
-          <div class="recipe-grid" data-recipe-list></div>
+      <section id="recipes" class="section recipes-section" aria-labelledby="recipes-title">
+        <div class="recipe-worktable-decoration" aria-hidden="true"></div>
+        <div class="section-inner recipes-inner">
+          <header class="recipes-heading">
+            <p class="eyebrow" data-recipes-english-title></p>
+            <h2 id="recipes-title" data-recipes-title></h2>
+            <p class="section-lead" data-recipes-intro></p>
+          </header>
+          <div class="recipe-paper-field" data-recipe-list></div>
         </div>
       </section>
 
@@ -146,6 +147,25 @@
     <noscript>
       <p class="noscript-message">请启用 JavaScript，以显示作品、烘焙秘方和联系方式。</p>
     </noscript>
+
+    <div class="recipe-modal" data-recipe-modal hidden>
+      <div class="recipe-modal-backdrop" data-recipe-close aria-hidden="true"></div>
+      <div
+        class="recipe-modal-paper"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="recipe-modal-title"
+        aria-describedby="recipe-modal-body"
+        tabindex="-1"
+        data-recipe-dialog
+      >
+        <button class="recipe-modal-close" type="button" aria-label="关闭秘方" data-recipe-close>
+          <span aria-hidden="true">×</span>
+        </button>
+        <div class="recipe-modal-content" data-recipe-modal-content></div>
+      </div>
+    </div>
+
     <script src="content.js"></script>
     <script src="script.js"></script>
   </body>

@@ -2,7 +2,7 @@
 
 ## 当前用途
 
-这份清单记录首页、自我介绍和作品展示正式素材的固定路径、用途、处理状态和设计要求。后续处理或生成素材时，应使用表中的文件名，不随意更名；素材完成并确认可以公开后，再放入对应路径。
+这份清单记录首页、自我介绍、作品展示和烘焙秘方正式素材的固定路径、用途、处理状态和设计要求。后续处理或生成素材时，应使用表中的文件名，不随意更名；素材完成并确认可以公开后，再放入对应路径。
 
 ## 首页正式素材
 
@@ -29,6 +29,20 @@
 | `assets/images/projects/project-sohu-interview.png` | 搜狐员工采访快剪截图 | 已接入并通过验收 | 统一使用 4:3 图片区域和 `object-fit: cover`；草莓红用于标签、纸胶带、细线和外链图标 | 1600 × 1200 PNG；路径、比例、链接、alt 文本与显示效果验收通过 |
 | `assets/images/projects/project-sohu-wechat.png` | 搜狐企业文化活动推送截图 | 已接入并通过验收 | 统一使用 4:3 图片区域和 `object-fit: cover`；焦糖棕用于标签、纸胶带、细线和外链图标 | 1600 × 1200 PNG；路径、比例、链接、alt 文本与显示效果验收通过 |
 | `assets/images/projects/project-decode-bts.png` | decodeBTS 歌词注释网站截图 | 已接入并通过验收 | 统一使用 4:3 图片区域和 `object-fit: cover`；鼠尾草绿用于标签、纸胶带、细线和外链图标 | 1600 × 1200 PNG；路径、比例、链接、alt 文本与显示效果验收通过 |
+
+## 烘焙秘方正式素材
+
+| 素材路径 | 用途 | 状态 | 处理或设计要求 | 当前文件 |
+| --- | --- | --- | --- | --- |
+| `assets/images/recipes/recipe-bts.jpg` | Recipe Note 01：世界的选择是BTS | 已接入并通过验收 | 保持原比例；紫色强调仅用于编号、胶带和细节 | 1024 × 1366 JPEG；路径、加载、比例与显示效果验收通过 |
+| `assets/images/recipes/recipe-travel.jpg` | Recipe Note 02：好喜欢海边 | 已接入并通过验收 | 保持原比例；米灰色强调仅用于编号、胶带和细节 | 1280 × 1708 JPEG；路径、加载、比例与显示效果验收通过 |
+| `assets/images/recipes/recipe-fandom.jpg` | Recipe Note 03：热爱从线上到线下 | 已接入并通过验收 | 保持原比例；陶土色强调仅用于编号、胶带和细节 | 1279 × 1706 JPEG；路径、加载、比例与显示效果验收通过 |
+| `assets/images/recipes/recipe-currently-watching.jpg` | Recipe Note 04：最近在看的 | 已接入并通过验收 | 保持原比例；灰蓝色强调仅用于编号、胶带和细节 | 450 × 600 PNG 内容，保留现有 `.jpg` 文件名；路径、加载、比例与显示效果验收通过 |
+| `assets/images/recipes/recipe-song.jpg` | Recipe Note 05：最近在听的 | 已接入并通过验收 | 保持原比例；蓝色强调仅用于编号、胶带和细节 | 1920 × 1920 PNG 内容，保留现有 `.jpg` 文件名；路径、加载、比例与显示效果验收通过 |
+| `assets/images/recipes/recipe-vibe-coding.png` | Recipe Note 06：最近感兴趣的事 | 已接入并通过验收 | 保持原比例和透明通道；砖红色强调仅用于编号、胶带和细节 | 2560 × 1664 PNG；路径、加载、比例与显示效果验收通过 |
+| `assets/images/recipes/recipe-daily-moment.jpg` | Recipe Note 07：一个生活的瞬间 | 已接入并通过验收 | 保持原比例；莓果红强调仅用于编号、胶带和细节 | 3000 × 4000 JPEG；路径、加载、比例与显示效果验收通过 |
+| `assets/audio/recipe-gemini-clip.mp3` | Recipe Note 05 原生音频试听 | 已接入并通过验收 | 使用 `<audio controls>`、`preload="metadata"`，不自动播放 | MP3；加载、播放、键盘操作与关闭处理验收通过 |
+| `assets/downloads/tata-codex-pet-pack.zip` | Recipe Note 06 TATA Codex桌宠下载包 | 已接入并通过验收 | 下载链接使用 `download` 属性，下载名保持 `tata-codex-pet-pack.zip` | ZIP；下载路径、`download` 属性与下载文件名验收通过 |
 
 ## 素材公开与隐私规则
 
